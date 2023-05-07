@@ -1,5 +1,5 @@
-# SHU-Bachelor-Thesis-Typst (开发ing)
-上海大学本科毕业论文[_typst_](https://typst.app/)模板
+# WUT-Bachelor-Thesis-Typst (开发ing)
+武汉理工本科毕业论文[_typst_](https://typst.app/)模板
 
 ## 为什么要使用typst
 typst相较Latex具有较为简洁的[语法](https://typst.app/docs/reference/syntax/)，更加用户友好的[教程及文档](https://typst.app/docs/tutorial/)。除去其用于支持用户自定样式的语法，typst具有与markdown高度相似的语法，使非模板编辑者能更好的聚焦文档编写本身。而且，typst具有快速的编译速度，搭配[vscode typst lsp](https://marketplace.visualstudio.com/items?itemName=nvarner.typst-lsp)的监听修改自动编译的功能，可以即时预览编译出的pdf文件。

@@ -1,12 +1,12 @@
 // 字体定义
-#let heiti = ("Times New Roman", "Heiti SC", "Heiti TC")
-#let songti = ("Times New Roman", "Songti SC")
-#let kaiti = ("Times New Roman", "Kaiti SC")
+#let font_family = (
+    zhongsong: ("Times New Roman", "STZhongsong"),
+    heiti: ("Times New Roman", "SimHei"),
+    songti: ("Times New Roman", "SimSun"),
+)
+
 
 // 字号设置
-// -----------------
-// 2023/4/11 update log：
-//  - 增加了对于字号的设置，便于后续修改
 #let font_size = (
     yihao: 26pt,
     xiaoyi: 24pt,

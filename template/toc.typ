@@ -1,28 +1,23 @@
 #import "font.typ": *
 
-
-#set page(footer: [
-    #set align(center)
-    #set text(size: 10pt, baseline: -3pt)
-    #counter(page).display(
-      "I",
-    )
-] )
-
+#set page(
+  header: none,
+  footer: none
+)
 
 // 目录
-#v(1em)
+#v(1.5em)
 #align(center)[
-  #text(font: songti, size: font_size.sanhao, "目    录")
+    #text(font: font_family.heiti, size: font_size.xiaoer, "目    录")
 ]
 
 #parbreak();
-
 #show outline: it => {
-  set text(font: songti, size: font_size.xiaosi)
-  set par(leading: 1em )
+  set text(font: font_family.songti, size: font_size.xiaosi)
+  set par(leading: 1.2em )
   it
 }
+
 #outline(
   title: none,
   indent : true,

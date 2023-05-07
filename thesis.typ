@@ -1,3 +1,3 @@
 #import "./template/template.typ": *
 
-#show: Thesis()
+#show: wut()

@@ -5,20 +5,14 @@
 #counter(page).update(1)
 
 // 章节计数器，记录公式层级
-// -----------------
-// 2023/4/11 update log：
-//  - 增加计数器，把元素序号转为 `x.x` 的格式
 #let counter_chapter   = counter("chapter")
 #let counter_equation  = counter(math.equation)
 #let counter_image     = counter(figure.where(kind: image))
 #let counter_table     = counter(figure.where(kind: table))
 
 // 图片和表的格式
-// -----------------
-// 2023/4/11 update log：
-//  - 把元素序号转为 `x.x` 的格式
 #show figure: it => [
-    #set text(font_size.wuhao)
+    #set text(font: font_family.songti, size: font_size.xiaosi)
     #set align(center)
 
     #if not it.has("kind") {
@@ -44,22 +38,16 @@
     } else {
       it.body
     }
-  ]
+]
 
 // 设置公式格式
-// -----------------
-// 2023/4/11 update log：
-//  - 修复为章节号 + 公示编号
 #set math.equation(
   numbering: (..nums) => locate( loc => {
-      numbering("(1.1)", counter_chapter.at(loc).first(), ..nums)
+      numbering("（1.1）", counter_chapter.at(loc).first(), ..nums)
   })
 )
 
 // 设置引用格式
-// -----------------
-// 2023/4/11 update log：
-//  - 原本对公式的引用是 `Equation (x.x)`，改为 `式x.x`
 #show ref: it => {
   locate(loc => {
   let elems = query(it.target, loc)
@@ -93,41 +81,47 @@
 })
 }
 
-#set heading(numbering: (..nums) => 
-                          if nums.pos().len() == 1 {
-                            "第"+zhnumbers(nums.pos().first()) +"章"
-                          } 
-                          else {
-                            nums.pos().map(str).join(".")
-                          })
+
+#set heading(numbering: (..nums) => {
+  if nums.pos().len() == 1 {
+    "第 " + numbering("1", ..nums) +  " 章"
+  } else {
+    numbering("1.1", ..nums)
+}})
+
+
+#let sized_heading(it, size) = [
+  #set text(size, font: font_family.heiti)
+  #v(0.5em)
+  #if it.numbering != none {
+    counter(heading).display()
+  }
+  #it.body
+  #v(0.5em)
+]
+
 
 #show heading: it =>  {
+  set par(first-line-indent: 0em)
+
   if it.level == 1 {
     set align(center)
-    set text(font:heiti, size: font_size.xiaoer, weight: "regular")
     counter_chapter.step()
     counter_equation.update(())
     counter_image.update(())
     counter_table.update(())
-    it
-    par(leading: 1.5em)[#text(size:0.0em)[#h(0.0em)]]
+    sized_heading(it, font_size.xiaoer)
   } else if it.level == 2 {
-    set text(font:heiti, size: font_size.sihao, weight: "regular")
-    it
-    par(leading: 1.5em)[#text(size:0.0em)[#h(0.0em)]]
+    sized_heading(it, font_size.sanhao)
   } else if it.level == 3 {
-    set text(font:heiti, size: font_size.xiaosi, weight: "regular")
-    it
-    par(leading: 1.5em)[#text(size:0.0em)[#h(0.0em)]]
+    sized_heading(it, font_size.sihao)
+  } else {
+    sized_heading(it, font_size.xiaosi)
   }
 }
 
 // 设置正文格式
-#set text(font: songti, size: font_size.xiaosi)
-#set par(justify: false, leading: 1.5em, first-line-indent: 2em)
-#show par: it => {
-  it 
-  v(5pt)
-}
-
-#include "../contents/context.typ"  
+#set align(left + top)
+#set text(font: font_family.songti, size: font_size.xiaosi)
+#set par(justify: true, leading: 10pt, first-line-indent: 2em)
+#include "../contents/context.typ"
