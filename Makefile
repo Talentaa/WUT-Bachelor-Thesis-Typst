@@ -1,6 +1,6 @@
 PROJECT_ROOT := $(abspath .)
 OUTPUT_NAME  := thesis
-FONTS_PATH := $(abspath ./fonts)
+FONTS_PATH := $(abspath ./template/fonts)
 
 # Build the thesis PDF from the Typst template
 default build:
