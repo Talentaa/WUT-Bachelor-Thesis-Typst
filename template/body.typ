@@ -53,7 +53,7 @@
   let elems = query(it.target, loc)
 
   if elems == () {
-    it
+    super(it)
   } else {
     let elem = elems.first()
     let elem_loc = elem.location()
