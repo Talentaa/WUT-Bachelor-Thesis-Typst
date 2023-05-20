@@ -32,7 +32,7 @@
 ]
 
 #v(1.5em)
-#par(justify: false,leading: 10pt,first-line-indent: 2em)[
+#par(justify: false,leading: 1em,first-line-indent: 2em)[
     #text(font: font_family.songti, size: font_size.xiaosi)[#abstract_zh]
 ]
 
@@ -51,7 +51,7 @@
 ]
 
 #v(1.5em)
-#par(justify: false, leading: 10pt, first-line-indent: 2em)[
+#par(justify: false, leading: 1em, first-line-indent: 2em)[
     #text(font: font_family.songti, size: font_size.xiaosi)[#abstract_en]
 ]
     

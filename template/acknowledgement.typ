@@ -16,5 +16,5 @@
 // 设置段落格式
 #set align(left + top)
 #set text(font: font_family.songti, size: font_size.xiaosi)
-#set par(justify: true, leading: 10pt, first-line-indent: 2em)
+#set par(justify: true, leading: 1em, first-line-indent: 2em)
 #include "../contents/acknowledgement.typ"
